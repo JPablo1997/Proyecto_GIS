@@ -1,0 +1,347 @@
+MAP
+  NAME           map.politica_
+  IMAGETYPE      png24
+  FONTSET "../fonts/fonts.list"
+  EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+  SIZE 500 400
+  IMAGECOLOR 255 255 255
+  UNITS DD
+
+  OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "AGG/PNG"
+    EXTENSION "png"
+    IMAGEMODE RGB
+    TRANSPARENT FALSE
+  END # OUTPUTFORMAT
+
+  PROJECTION
+    "proj=longlat"
+    "datum=WGS84"
+    "no_defs"
+  END # PROJECTION
+  LEGEND
+    KEYSIZE 20 20
+    KEYSPACING 5 5
+    LABEL
+      SIZE MEDIUM
+      OFFSET 0 0
+      SHADOWSIZE 1 1
+      TYPE BITMAP
+    END # LABEL
+    STATUS OFF
+  END # LEGEND
+
+  QUERYMAP
+    SIZE -1 -1
+    STATUS OFF
+    STYLE HILITE
+  END # QUERYMAP
+
+  SCALEBAR
+    INTERVALS 4
+    LABEL
+      SIZE MEDIUM
+      OFFSET 0 0
+      SHADOWSIZE 1 1
+      TYPE BITMAP
+    END # LABEL
+    SIZE 200 3
+    STATUS OFF
+    UNITS MILES
+  END # SCALEBAR
+
+  WEB
+    FOOTER ""
+    HEADER ""
+    #TEMPPATH ""
+    METADATA
+      "ows_onlineresource"	"http://localhost/cgi-bin/mapserv?map=/home/pablo/Documentos/UES/Ciclo_I_2019/SGG115/Proyecto_GIS/maps/division_politica.map&layer&mode=browse"
+      "ows_enable_request"	"*"
+      "wfs_encoding"	"UTF-8"
+      "ows_title"	"div_politica"
+    END # METADATA
+    TEMPLATE  '../templates/division_politica.html'
+    IMAGEPATH '/var/www/html/tmp/'
+    IMAGEURL  '/tmp/'
+  END # WEB
+
+  LEGEND
+    KEYSIZE 12 12
+    LABEL
+      TYPE BITMAP
+      SIZE MEDIUM
+      COLOR 0 0 89
+    END
+    STATUS ON
+  END
+
+  REFERENCE
+    IMAGE '../images/mapa_referencia.png' # The reference image
+    SIZE 155 105 # The size of the reference image in pixels
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001 # The extent of the reference image in map units
+    STATUS ON
+    MINBOXSIZE 10 # How small can the reference box be before it gets drawn as a point, in pixels
+    MAXBOXSIZE 200 # The maximum size of the reference box, in pixels
+    COLOR -1 -1 -1 # The reference box fill color, negative numbers mean transparent
+    OUTLINECOLOR 255 128 0 # The reference box outline color 
+    MARKERSIZE 10 # The size of the point marker
+    MARKER 'star' # The marker symbol
+  END
+
+  SCALEBAR
+    IMAGECOLOR 255 255 255
+    LABEL
+      COLOR 0 0 0
+      SIZE 8
+    END
+    STYLE 1
+    SIZE 140 10
+    COLOR 0 0 0
+    UNITS METERS
+    INTERVALS 2
+    TRANSPARENT FALSE
+    STATUS ON
+  END # Scalebar object ends
+
+
+LAYER
+  	CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM (SELECT gid, geom FROM muna_wgs_1984) as sq USING UNIQUE gid USING srid=4326" #WHERE cod_dpto='06'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"muna_wgs_1984"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "muna_wgs_1984"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    #LABELITEM "nom_dpto"
+
+    UNITS METERS
+    CLASS
+      NAME "muna_wgs_1984"
+      STYLE
+        COLOR 94 115 60
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 0 0 0
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+  LAYER
+  	CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM (SELECT gid, geom FROM dptoa_wgs_1984) as sq USING UNIQUE gid USING srid=4326" #WHERE nom_dpto='SAN SALVADOR'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"dptoa_wgs_1984"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "dptoa_wgs_1984"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS OFF
+    TILEITEM "location"
+    TYPE LINE
+
+    #LABELITEM "nom_dpto"
+
+    UNITS METERS
+    CLASS
+      NAME "dptoa_wgs_1984"
+      STYLE
+        COLOR 220 210 60
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 50 50 50
+        WIDTH 0.982677
+      END # STYLE
+      
+
+    END # CLASS
+  END # LAYER
+
+
+  
+
+
+  LAYER
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    CONNECTIONTYPE POSTGIS
+    DATA 'geom FROM "public"."lagoa_wgs_1984" USING UNIQUE gid USING srid=4326'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"lagoa_wgs_1984"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "lagoa_wgs_1984"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+    STATUS OFF
+    TILEITEM "location"
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "lagoa_wgs_1984"
+      STYLE
+        COLOR 0 0 100
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 0 0 255
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+  LAYER
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    CONNECTIONTYPE POSTGIS
+    DATA 'geom FROM "public"."distritos_ss-polygon" USING UNIQUE gid USING srid=4326'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"distritos_ss-polygon"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "distritos_ss-polygon"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+    STATUS OFF
+    TILEITEM "location"
+    TYPE LINE
+    UNITS METERS
+    CLASS
+      NAME "distritos_ss-polygon"
+      STYLE
+        COLOR 10 240 10
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 0 0 255
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+
+  LAYER
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    CONNECTIONTYPE POSTGIS
+    DATA 'geom FROM "public"."slv_adm0" USING UNIQUE gid USING srid=4326'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"slv_adm0"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "slv_adm0"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+    STATUS ON
+    TILEITEM "location"
+    TYPE LINE
+    UNITS METERS
+    CLASS
+      NAME "slv_adm0"
+      STYLE
+        COLOR 94 115 60
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 0 0 0
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+
+LAYER
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    CONNECTIONTYPE POSTGIS
+    DATA 'geom FROM "public"."rioa_wgs_1984" USING UNIQUE gid USING srid=4326'
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items"	"all"
+      "gml_featureid"	"gid"
+      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs"	"EPSG:4326"
+      "ows_title"	"rioa_wgs_1984"
+      "wms_getfeatureinfo_formatlist"	"OGRGML"
+      "wms_bbox_extended"	"true"
+      "gml_include_items"	"all"
+    END # METADATA
+    NAME "rioa_wgs_1984"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+    STATUS OFF
+    TILEITEM "location"
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "rioa_wgs_1984"
+      STYLE
+        COLOR 94 115 60
+      END # STYLE
+      STYLE
+   		OUTLINECOLOR 0 0 255
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+END # MAP

@@ -1,0 +1,113 @@
+<!-- MapServer Template --> 
+<html>
+<head>
+<title>GIS Deserción en el municio de SS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="1200" align="center">
+<tr>
+    <td width="593">
+	<h3 align="center">Centros educativos del sector privado y público con deserción escolar en el municipio de San Salvador</h3>
+
+<!-- START OF MAPSERVER FORM -->
+<form name="mapserv" method="GET" action="/cgi-bin/mapserv">
+
+<!-- HIDDEN MAPSERVER CGI VARIABLES -->
+    <input type="hidden" name="map" value="[map]" />
+    <input type="hidden" name="imgext" value="[mapext]" />
+    <input type="hidden" name="imgxy" value="[center]" />
+
+<table width="500" border="0" align="center">
+  <tr>
+    <td>
+	<table width="500" border="1">
+
+		<tr>
+	    <td colspan="3">Selecciona las capas: <br>
+<!-- SPECIFY VECTOR LAYERS -->
+		  <table>
+		  	<tr>
+		  		
+		  		<td>
+		  			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="dptoa_wgs_1984"[dptoa_wgs_1984_check]>Departamentos &nbsp;
+		  		</td>
+		  		<td>
+		  			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="muna_wgs_1984"[muna_wgs_1984_check]>Municipios &nbsp;<br>
+		  		</td> 
+		  		<td>
+		  			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="slv_adm0"[slv_adm0_check]>Pais <br>
+		  		</td>
+		  	</tr>
+		  	<tr>
+		  		<td>
+		  			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="rioa_wgs_1984"[rioa_wgs_1984_check]>Rios&nbsp;<br>
+		  		</td>
+		  		<td>
+	      			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="lagoa_wgs_1984"[lagoa_wgs_1984_check]>Lagos&nbsp;<br>
+		  		</td>
+		  		<td>
+		  			<input type="checkbox" onclick="document.getElementById('refrescar').click();" name="layer" value="distritos_ss-polygon"[distritos_ss-polygon_check]>Distritos&nbsp;<br>
+		  		</td>
+		  	</tr>
+		  </table>
+	    </td>
+	  </tr>
+
+	  <tr>
+	    <td>
+
+<!-- SPECIFY MAP MODE -->
+	      <div align="center">Modo del mapa:<br>
+		<select name="mode">
+		  <option value="browse">Browse</option>
+		  <option value="map">Map</option>
+		</select>
+	      </div>
+	    </td>
+	    <td>
+<!-- FORM SUBMIT BUTTON -->
+	      <div align="center">
+			<input id="refrescar" type="submit" name="submit" value="Refrescar">
+	      </div>
+	    </td>
+	    <td>
+<!-- ZOOM/PAN CONTROLS -->
+	      <div align="center">Control del mapa: <br>
+                <select name="zoom">
+                  <option value="4" [zoom_4_select]>Zoom In 4x</option>
+                  <option value="3" [zoom_3_select]>Zoom In 3x</option>
+                  <option value="2" [zoom_2_select]>Zoom In 2x</option>
+                  <option value="0" [zoom_0_select]>Recenter</option>
+                  <option value="-2" [zoom_-2_select]>Zoom Out 2x</option>
+                  <option value="-3" [zoom_-3_select]>Zoom Out 3x</option>
+                  <option value="-4" [zoom_-4_select]>Zoom Out 4x</option>
+                </select>
+              </div>
+	    </td>
+	    <!-- REFERENCE COLUMN --> 
+	    <td rowspan="2" valign="top"> 
+	    	<p>Reference:<br> <input type="image" name="ref" src="[ref]" width="230" height="200" border="0"></p> 
+	    	<p>Legend:<br> <img name="legend" src="[legend]"></p>
+	    </td>
+	  </tr>
+	  <tr>
+<!-- DISPLAY THE MAPSERVER-CREATED MAP IMAGE -->
+	    <td colspan="3" align="center" valign="top"> 
+	      <input type="image" name="img" src="[img]" width="500" height="400" border="0"/>
+	      <table border="0" width="400" align="center"> 
+	      	<!-- DISPLAY THE SCALE BAR --> 
+	      	<tr><td align="right"><img src="[scalebar]"></td></tr> 
+	      </table>
+	    </td>
+	  </tr>
+	</table>
+    </td>
+  </tr>
+</table>
+</form>
+</table>
+</body>
+</html>
