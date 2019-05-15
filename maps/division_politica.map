@@ -33,12 +33,7 @@ MAP
     STATUS OFF
   END # LEGEND
 
-  QUERYMAP
-    SIZE -1 -1
-    STATUS OFF
-    STYLE HILITE
-  END # QUERYMAP
-
+   
   SCALEBAR
     INTERVALS 4
     LABEL
@@ -51,6 +46,14 @@ MAP
     STATUS OFF
     UNITS MILES
   END # SCALEBAR
+
+  QUERYMAP
+    SIZE 200 150
+    STATUS ON
+    STYLE HILITE  # SELECTED | NORMAL
+    COLOR 255 0 0
+  END
+
 
   WEB
     FOOTER ""
@@ -109,7 +112,7 @@ MAP
 LAYER
   	CONNECTIONTYPE POSTGIS
     CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    DATA "geom FROM (SELECT gid, geom FROM muna_wgs_1984) as sq USING UNIQUE gid USING srid=4326" #WHERE cod_dpto='06'
+    DATA "geom FROM (SELECT gid, geom FROM muna_wgs_1984) as sq USING UNIQUE gid USING srid=4326" 
     EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
     METADATA
       "ows_include_items"	"all"
@@ -148,9 +151,9 @@ LAYER
   END # LAYER
 
   LAYER
-  	CONNECTIONTYPE POSTGIS
-    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    DATA "geom FROM (SELECT gid, geom FROM dptoa_wgs_1984) as sq USING UNIQUE gid USING srid=4326" #WHERE nom_dpto='SAN SALVADOR'
+  	#CONNECTIONTYPE POSTGIS
+    #CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "../data/dptoA_WGS_1984/dptoA_WGS_1984"
     EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
     METADATA
       "ows_include_items"	"all"
@@ -163,21 +166,28 @@ LAYER
       "gml_include_items"	"all"
     END # METADATA
     NAME "dptoa_wgs_1984"
+    GROUP "deptos"
     PROJECTION
       "proj=longlat"
       "datum=WGS84"
       "no_defs"
     END # PROJECTION
 
-    STATUS OFF
+    STATUS ON
     TILEITEM "location"
-    TYPE LINE
+    TYPE POLYGON
+
+    HEADER '../templates/deptos_header.html'
+    FOOTER '../templates/deptos_footer.html'
+
+    TOLERANCE 3
 
     #LABELITEM "nom_dpto"
 
     UNITS METERS
     CLASS
-      NAME "dptoa_wgs_1984"
+      NAME "deptos"
+      TEMPLATE '../templates/deptos_query.html'
       STYLE
         COLOR 220 210 60
       END # STYLE
@@ -185,8 +195,6 @@ LAYER
    		OUTLINECOLOR 50 50 50
         WIDTH 0.982677
       END # STYLE
-      
-
     END # CLASS
   END # LAYER
 

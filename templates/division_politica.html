@@ -62,8 +62,9 @@
 <!-- SPECIFY MAP MODE -->
 	      <div align="center">Modo del mapa:<br>
 		<select name="mode">
-		  <option value="browse">Browse</option>
-		  <option value="map">Map</option>
+		  <option value="browse" [browse_select]> Browse </option>
+		  <option value="query" [query_select]> Query Single Layer</option> 
+		  <option value="nquery" [nquery_select]> Query Multiple Layers</option>
 		</select>
 	      </div>
 	    </td>
