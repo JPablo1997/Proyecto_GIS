@@ -56,8 +56,8 @@ MAP
 
 
   WEB
-    FOOTER ""
-    HEADER ""
+     HEADER    '../templates/base_header.html'
+     FOOTER    '../templates/base_footer_querymap.html'
     #TEMPPATH ""
     METADATA
       "ows_onlineresource"	"http://localhost/cgi-bin/mapserv?map=/home/pablo/Documentos/UES/Ciclo_I_2019/SGG115/Proyecto_GIS/maps/division_politica.map&layer&mode=browse"
@@ -102,7 +102,7 @@ MAP
     STYLE 1
     SIZE 140 10
     COLOR 0 0 0
-    UNITS METERS
+    UNITS MILES
     INTERVALS 2
     TRANSPARENT FALSE
     STATUS ON
@@ -153,6 +153,7 @@ LAYER
   LAYER
   	#CONNECTIONTYPE POSTGIS
     #CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    #DATA 'geom FROM "public"."dptoa_wgs_1984" USING UNIQUE gid USING srid=4326'
     DATA "../data/dptoA_WGS_1984/dptoA_WGS_1984"
     EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
     METADATA
