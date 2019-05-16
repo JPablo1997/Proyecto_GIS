@@ -109,46 +109,7 @@ MAP
   END # Scalebar object ends
 
 
-LAYER
-  	CONNECTIONTYPE POSTGIS
-    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    DATA "geom FROM (SELECT gid, geom FROM muna_wgs_1984) as sq USING UNIQUE gid USING srid=4326" 
-    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
-    METADATA
-      "ows_include_items"	"all"
-      "gml_featureid"	"gid"
-      "ows_extent"	"-90.132001947 13.155401523 -87.683801577 14.45105474"
-      "ows_srs"	"EPSG:4326"
-      "ows_title"	"muna_wgs_1984"
-      "wms_getfeatureinfo_formatlist"	"OGRGML"
-      "wms_bbox_extended"	"true"
-      "gml_include_items"	"all"
-    END # METADATA
-    NAME "muna_wgs_1984"
-    PROJECTION
-      "proj=longlat"
-      "datum=WGS84"
-      "no_defs"
-    END # PROJECTION
 
-    STATUS ON
-    TILEITEM "location"
-    TYPE POLYGON
-
-    #LABELITEM "nom_dpto"
-
-    UNITS METERS
-    CLASS
-      NAME "muna_wgs_1984"
-      STYLE
-        COLOR 94 115 60
-      END # STYLE
-      STYLE
-   		OUTLINECOLOR 0 0 0
-        WIDTH 0.982677
-      END # STYLE
-    END # CLASS
-  END # LAYER
 
   LAYER
   	#CONNECTIONTYPE POSTGIS
@@ -200,7 +161,46 @@ LAYER
   END # LAYER
 
 
-  
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='gis_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM (SELECT gid, geom FROM muna_wgs_1984) as sq USING UNIQUE gid USING srid=4326" 
+    EXTENT -90.1320019469999 13.1554015230001 -87.6838015769999 14.4510547400001
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-90.132001947 13.155401523 -87.683801577 14.45105474"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "muna_wgs_1984"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "muna_wgs_1984"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    #LABELITEM "nom_dpto"
+
+    UNITS METERS
+    CLASS
+      NAME "muna_wgs_1984"
+      STYLE
+        COLOR 94 115 60
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 0.982677
+      END # STYLE
+    END # CLASS
+  END # LAYER
 
 
   LAYER
