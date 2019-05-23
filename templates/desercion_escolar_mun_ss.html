@@ -50,25 +50,25 @@
 </script>
 </head>
 
-<body bgcolor="#FFFFFF" text="#000000">
+<body bgcolor="#C0C0C0" text="#000000">
 <table width="1200" align="center">
 <tr>
     <td width="600">
-	<h3 align="center">Centros educativos del sector privado y público con deserción escolar en el municipio de San Salvador</h3>
+	<h2 align="center">Desercion en los centros educativos del sector público y privado en el municipio de San Salvador</h2>
 
 <!-- START OF MAPSERVER FORM -->
 <form name="mapserv" method="GET" action="/cgi-bin/mapserv">
 
-<table width="500" border="0" align="center">
+<table bgcolor="#FFFFFF" class="table" width="500" border="0" align="center">
   <tr>
     <td>
 	<table width="500" border="1">
 
 		<tr>
-	    <td colspan="4">Selecciona las capas: <br>
+	    <td colspan="4"><b>Selecciona las capas:</b> <br>
 <!-- SPECIFY VECTOR LAYERS -->
 		  <table>
-		  	<tr>
+		  	<tr align="center">
 		  		<td>
 		  			<input id="mun_ss" type="checkbox" onclick="refrescarBTN()" name="layer" value="mun_ss"[mun_ss_check]>Municipio SS &nbsp;
 		  		</td>
@@ -93,7 +93,7 @@
 	    <td>
 
 <!-- SPECIFY MAP MODE -->
-	      <div align="center">Modo del mapa:<br>
+	      <div align="center"><b>Modo del mapa:</b><br>
 		<select name="mode">
 		  <option value="browse" [browse_select]> Browse </option>
 		  <option value="query" [query_select]> Query Single Layer</option> 
@@ -109,7 +109,7 @@
 	    </td>
 	    <td>
 <!-- ZOOM/PAN CONTROLS -->
-	      <div align="center">Control del mapa: <br>
+	      <div align="center"><b>Control del mapa:</b> <br>
                 <select id="zoom" name="zoom">
                   <option value="4" [zoom_4_select]>Zoom In 4x</option>
                   <option value="3" [zoom_3_select]>Zoom In 3x</option>
@@ -123,8 +123,8 @@
 	    </td>
 	    <!-- REFERENCE COLUMN --> 
 	    <td rowspan="2" valign="top"> 
-	    	<p>Reference:<br> <input type="image" name="ref" src="[ref]" width="180" height="180" border="0" style="padding-top: 10px;"></p> 
-	    	<p>Legend:<br> <img name="legend" src="[legend]"></p>
+	    	<p><b>Reference:</b><br> <input type="image" name="ref" src="[ref]" width="180" height="180" border="0" style="padding-top: 10px;"></p> 
+	    	<p><b>Legend:</b><br> <img name="legend" src="[legend]"></p>
 	    </td>
 	  </tr>
 	  <tr>

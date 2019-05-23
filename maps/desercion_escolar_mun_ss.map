@@ -125,7 +125,7 @@ MAP
     UNITS METERS
 
     CLASS
-      NAME "mun_ss"
+      NAME "Municipio de SS"
       STYLE
         COLOR 94 115 60
       END # STYLE
@@ -171,7 +171,7 @@ MAP
 
     UNITS METERS
     CLASS
-      NAME "distritos_ss"
+      NAME "Distritos SS"
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
         COLOR 111 106 72
@@ -185,10 +185,10 @@ MAP
 
 
   LAYER
-    #CONNECTIONTYPE POSTGIS
-    #CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    #DATA "geom FROM distritos_homicidios USING UNIQUE gid USING srid=4326" 
-    DATA "../data/distA_homicidios_WGS_1984/Distritos_homicidios"
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM distritos_homicidios USING UNIQUE gid USING srid=4326" 
+    #DATA "../data/distA_homicidios_WGS_1984/Distritos_homicidios"
     EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
     METADATA
       "ows_include_items" "all"
@@ -212,14 +212,20 @@ MAP
     TYPE POLYGON
     UNITS METERS
 
+    HEADER '../templates/distrito_homicidio_query/distrito_homicidio_header.html'
+    FOOTER '../templates/distrito_homicidio_query/distrito_homicidio_footer.html'
+    
+    TOLERANCE 3
+
     CLASSITEM nombre
 
     
     CLASS
       EXPRESSION ([cant_homic] <  20)
       NAME "Menores a 20 homicidios"
+      TEMPLATE '../templates/distrito_homicidio_query/distrito_homicidio_query.html'
       STYLE
-        COLOR 255 240 240
+        COLOR 255 229 204
       END # STYLE
       STYLE
       OUTLINECOLOR 0 0 0
@@ -230,8 +236,9 @@ MAP
     CLASS
       EXPRESSION (([cant_homic] >= 20)AND([cant_homic] < 40))
       NAME "Entre 20 y 40 homicidios"
+      TEMPLATE '../templates/distrito_homicidio_query/distrito_homicidio_query.html'
       STYLE
-        COLOR 255 180 180
+        COLOR 255 204 153
       END # STYLE
       STYLE
       OUTLINECOLOR 0 0 0
@@ -242,8 +249,9 @@ MAP
     CLASS
       EXPRESSION (([cant_homic] >= 40)AND([cant_homic] < 60))
       NAME "Entre 40 y 60 homicidios"
+      TEMPLATE '../templates/distrito_homicidio_query/distrito_homicidio_query.html'
       STYLE
-        COLOR 255 120 120
+        COLOR 255 178 102
       END # STYLE
       STYLE
       OUTLINECOLOR 0 0 0
@@ -254,8 +262,9 @@ MAP
     CLASS
       EXPRESSION (([cant_homic] >= 60)AND([cant_homic] < 80))
       NAME "Entre 60 y 80 homicidios"
+      TEMPLATE '../templates/distrito_homicidio_query/distrito_homicidio_query.html'
       STYLE
-        COLOR 255 60 60
+        COLOR 255 153 51
       END # STYLE
       STYLE
       OUTLINECOLOR 0 0 0
@@ -266,8 +275,9 @@ MAP
     CLASS
       EXPRESSION ([cant_homic] >= 80)
       NAME "Mayores a 80 homicidios"
+      TEMPLATE '../templates/distrito_homicidio_query/distrito_homicidio_query.html'
       STYLE
-        COLOR 255 0 0
+        COLOR 255 128 0
       END # STYLE
       STYLE
       OUTLINECOLOR 0 0 0
@@ -303,9 +313,15 @@ LAYER
     TILEITEM "location"
     TYPE POLYGON
 
+    HEADER '../templates/poligono_interno_query/poligono_interno_header.html'
+    FOOTER '../templates/poligono_interno_query/poligono_interno_footer.html'
+    
+    TOLERANCE 3
+
     UNITS METERS
     CLASS
-      NAME "poligonos_internos"
+      NAME "Poligonos internos"
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
         COLOR 100 100 100
       END # STYLE
@@ -341,11 +357,16 @@ LAYER
     STATUS ON
     #TILEITEM "location"
     TYPE POINT
-    #DATA "../data/Centros_educativosP_WGS_1984/Centros_educativosP"
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
 
     #UNITS METERS
     CLASS
-	    NAME "centros_educativos"
+	    NAME "Centros educativos"
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
 	      SYMBOL "circle"
 	      SIZE 10
