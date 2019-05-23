@@ -1,0 +1,135 @@
+MAP
+  NAME           map.politica_
+  IMAGETYPE      png24
+  FONTSET "../fonts/fonts.list"
+  EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+  SIZE 550 350
+  IMAGECOLOR 255 255 255
+  UNITS DD
+
+  OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "AGG/PNG"
+    EXTENSION "png"
+    IMAGEMODE RGB
+    TRANSPARENT FALSE
+  END # OUTPUTFORMAT
+
+  PROJECTION
+    "proj=longlat"
+    "datum=WGS84"
+    "no_defs"
+  END # PROJECTION
+
+   
+  SCALEBAR
+    IMAGECOLOR 255 255 255
+    LABEL
+      COLOR 0 0 0
+      SIZE 8
+    END
+    STYLE 1
+    SIZE 105 10
+    COLOR 0 0 0
+    UNITS MILES
+    INTERVALS 2
+    TRANSPARENT FALSE
+    STATUS ON
+  END # Scalebar object ends
+
+  QUERYMAP
+    SIZE 200 150
+    STATUS ON
+    STYLE HILITE  # SELECTED | NORMAL
+    COLOR 255 0 0
+  END
+
+
+  WEB
+     HEADER    '../templates/base_header.html'
+     FOOTER    '../templates/base_footer_querymap.html'
+    #TEMPPATH ""
+    METADATA
+      "ows_onlineresource"	"http://localhost/cgi-bin/mapserv?map=/home/pablo/Documentos/UES/Ciclo_I_2019/SGG115/Proyecto_GIS/maps/desercion_escolar_mun_ss.map&layer&mode=browse"
+      "ows_enable_request"	"*"
+      "wfs_encoding"	"UTF-8"
+      "ows_title"	"desercion_escolar_mun_ss"
+    END # METADATA
+    TEMPLATE  '../templates/desercion_escolar_mun_ss.html'
+    IMAGEPATH '/var/www/html/tmp/'
+    IMAGEURL  '/tmp/'
+  END # WEB
+
+  LEGEND
+    KEYSIZE 12 12
+    LABEL
+      TYPE BITMAP
+      SIZE MEDIUM
+      COLOR 0 0 89
+    END
+    STATUS ON
+  END
+
+  REFERENCE
+    IMAGE '../images/mapa_referencia.png' # The reference image
+    SIZE 180 180 # The size of the reference image in pixels
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000 # The extent of the reference image in map units
+    STATUS ON
+    MINBOXSIZE 50 # How small can the reference box be before it gets drawn as a point, in pixels
+    MAXBOXSIZE 250 # The maximum size of the reference box, in pixels
+    COLOR -1 -1 -1 # The reference box fill color, negative numbers mean transparent
+    OUTLINECOLOR 255 128 0 # The reference box outline color 
+    MARKERSIZE 10 # The size of the point marker
+    MARKER 'star' # The marker symbol
+  END
+
+  
+
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM mun_ss USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "mun_ss"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "mun_ss"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    HEADER '../templates/deptos_header.html'
+    FOOTER '../templates/deptos_footer.html'
+
+    TOLERANCE 3
+
+    #LABELITEM "nom_dpto"
+
+    UNITS METERS
+    CLASS
+      NAME "mun_ss"
+      STYLE
+        COLOR 94 115 60
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.800000
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+END # MAP
