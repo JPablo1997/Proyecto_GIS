@@ -1,12 +1,31 @@
 <!-- MapServer Template -->
-    <h4 align="left"><b>Poligono seleccionado</b></h4>
+    <h4 align="center"><b>Distrito seleccionado</b></h4>
     <p>
-    <table cellpadding="3" cellspacing="0" border="0">
+    <table cellpadding="3" align="center" cellspacing="0"  border="2">
       <tr>
-        <td><img border="2" src="[img]"></td>
-      </tr>
-      <tr>
-        <th align="center">Estandar QueryMap</th>
+        <td><img border="2" style="border-color: black;" src="[img]" width="220" height="220"></td>
+        <td>
+          
+          <table width="680" border="0" bgcolor="c0c0c0">
+            <tr>
+              <td><b>Ventana de busqueda</b>:</td>
+              <td>[imgext]<br></td>
+            </tr>
+            <tr>
+              <td><b>Punto seleccionado</b>:</td>
+              <td>[img.x], [img.y] (Image coordinates)<br>
+                  [mapx], [mapy] (Map coordinates)
+              </td>
+            </tr>
+            <tr>
+              <td><b>Metrica de la consulta</b>:</td>
+              <td>Numero de capas con resultado=[nl]<br>
+                  Numero total de resultados=[nr]
+              </td>
+            </tr>
+          </table>
+
+        </td>
       </tr>
     </table>
   </body>

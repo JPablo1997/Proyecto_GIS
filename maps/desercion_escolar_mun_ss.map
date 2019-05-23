@@ -30,7 +30,7 @@ MAP
       SIZE 8
     END
     STYLE 1
-    SIZE 105 10
+    SIZE 160 10
     COLOR 0 0 0
     UNITS MILES
     INTERVALS 2
@@ -65,7 +65,7 @@ MAP
     KEYSIZE 12 12
     LABEL
       TYPE BITMAP
-      SIZE MEDIUM
+      SIZE LARGE
       COLOR 0 0 89
     END
     STATUS ON
@@ -76,7 +76,7 @@ MAP
     SIZE 180 180 # The size of the reference image in pixels
     EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000 # The extent of the reference image in map units
     STATUS ON
-    MINBOXSIZE 50 # How small can the reference box be before it gets drawn as a point, in pixels
+    MINBOXSIZE 10 # How small can the reference box be before it gets drawn as a point, in pixels
     MAXBOXSIZE 250 # The maximum size of the reference box, in pixels
     COLOR -1 -1 -1 # The reference box fill color, negative numbers mean transparent
     OUTLINECOLOR 255 128 0 # The reference box outline color 
@@ -84,11 +84,21 @@ MAP
     MARKER 'star' # The marker symbol
   END
 
+	SYMBOL
+	  NAME "circle"
+	  TYPE ellipse
+	  FILLED true
+	  POINTS
+	    1 1
+	  END
+	END
+
 
   LAYER
     CONNECTIONTYPE POSTGIS
     CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    DATA "geom FROM mun_ss USING UNIQUE gid USING srid=4326" 
+    DATA "geom FROM mun_ss USING UNIQUE gid USING srid=4326"
+    #DATA "../data/distA_homicidios_WGS_1984/Distritos_homicidios" 
     EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
     METADATA
       "ows_include_items" "all"
@@ -101,6 +111,7 @@ MAP
       "gml_include_items" "all"
     END # METADATA
     NAME "mun_ss"
+    
     PROJECTION
       "proj=longlat"
       "datum=WGS84"
@@ -112,16 +123,18 @@ MAP
     TYPE POLYGON
 
     UNITS METERS
+
     CLASS
       NAME "mun_ss"
       STYLE
         COLOR 94 115 60
       END # STYLE
       STYLE
-      OUTLINECOLOR 0 0 0
+      	OUTLINECOLOR 0 0 0
         WIDTH 1.800000
       END # STYLE
     END # CLASS
+
   END # LAYER
 
 
@@ -151,9 +164,15 @@ MAP
     TILEITEM "location"
     TYPE POLYGON
 
+    HEADER '../templates/distrito_query/distrito_header.html'
+    FOOTER '../templates/distrito_query/distrito_footer.html'
+    
+    TOLERANCE 3
+
     UNITS METERS
     CLASS
       NAME "distritos_ss"
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
         COLOR 111 106 72
       END # STYLE
@@ -168,13 +187,144 @@ MAP
   LAYER
     #CONNECTIONTYPE POSTGIS
     #CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
-    #DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
-    DATA "../data/Centros_educativosP_WGS_1984/Centros_educativosP"
+    #DATA "geom FROM distritos_homicidios USING UNIQUE gid USING srid=4326" 
+    DATA "../data/distA_homicidios_WGS_1984/Distritos_homicidios"
     EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
     METADATA
       "ows_include_items" "all"
       "gml_featureid" "gid"
       "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "distritos_homicidios"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "distritos_homicidios"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+    UNITS METERS
+
+    CLASSITEM nombre
+
+    
+    CLASS
+      EXPRESSION ([cant_homic] <  20)
+      NAME "Menores a 20 homicidios"
+      STYLE
+        COLOR 255 240 240
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      EXPRESSION (([cant_homic] >= 20)AND([cant_homic] < 40))
+      NAME "Entre 20 y 40 homicidios"
+      STYLE
+        COLOR 255 180 180
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      EXPRESSION (([cant_homic] >= 40)AND([cant_homic] < 60))
+      NAME "Entre 40 y 60 homicidios"
+      STYLE
+        COLOR 255 120 120
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      EXPRESSION (([cant_homic] >= 60)AND([cant_homic] < 80))
+      NAME "Entre 60 y 80 homicidios"
+      STYLE
+        COLOR 255 60 60
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      EXPRESSION ([cant_homic] >= 80)
+      NAME "Mayores a 80 homicidios"
+      STYLE
+        COLOR 255 0 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+  END # LAYER
+
+LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM poligonos_internosa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "poligonos_internos"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "poligonos_internos"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    UNITS METERS
+    CLASS
+      NAME "poligonos_internos"
+      STYLE
+        COLOR 100 100 100
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
       "ows_srs" "EPSG:4326"
       "ows_title" "centros_educativos"
       "wms_getfeatureinfo_formatlist" "OGRGML"
@@ -189,24 +339,21 @@ MAP
     END # PROJECTION
 
     STATUS ON
-    TILEITEM "location"
+    #TILEITEM "location"
     TYPE POINT
+    #DATA "../data/Centros_educativosP_WGS_1984/Centros_educativosP"
 
-    UNITS METERS
+    #UNITS METERS
     CLASS
-      NAME "centros_educativos"
-      STYLE
-      	SYMBOL "square"
-      	SIZE 16
-        COLOR 29 176 135
-      END # STYLE
-      STYLE
+	    NAME "centros_educativos"
+	    STYLE
 	      SYMBOL "circle"
 	      SIZE 10
-	      COLOR 0 0 255
+	      COLOR 240 230 140
+	      OUTLINECOLOR 0 0 0
 	    END # end of STYLE
-    END # CLASS
-  END # LAYER
+  END # end of CLASS
+ END # LAYER
     
 
 END # MAP
