@@ -47,8 +47,8 @@ MAP
 
 
   WEB
-     HEADER    '../templates/base_header.html'
-     FOOTER    '../templates/base_footer_querymap.html'
+     HEADER    '../templates/base/base_header.html'
+     FOOTER    '../templates/base/base_footer_querymap.html'
     #TEMPPATH ""
     METADATA
       "ows_onlineresource"	"http://localhost/cgi-bin/mapserv?map=/home/pablo/Documentos/UES/Ciclo_I_2019/SGG115/Proyecto_GIS/maps/desercion_escolar_mun_ss.map&layer&mode=browse"
@@ -84,7 +84,6 @@ MAP
     MARKER 'star' # The marker symbol
   END
 
-  
 
   LAYER
     CONNECTIONTYPE POSTGIS
@@ -112,13 +111,6 @@ MAP
     TILEITEM "location"
     TYPE POLYGON
 
-    HEADER '../templates/deptos_header.html'
-    FOOTER '../templates/deptos_footer.html'
-
-    TOLERANCE 3
-
-    #LABELITEM "nom_dpto"
-
     UNITS METERS
     CLASS
       NAME "mun_ss"
@@ -131,5 +123,90 @@ MAP
       END # STYLE
     END # CLASS
   END # LAYER
+
+
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM distritos_ssa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "distritos_ss"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "distritos_ss"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    UNITS METERS
+    CLASS
+      NAME "distritos_ss"
+      STYLE
+        COLOR 111 106 72
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+
+  LAYER
+    #CONNECTIONTYPE POSTGIS
+    #CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    #DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    DATA "../data/Centros_educativosP_WGS_1984/Centros_educativosP"
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POINT
+
+    UNITS METERS
+    CLASS
+      NAME "centros_educativos"
+      STYLE
+      	SYMBOL "square"
+      	SIZE 16
+        COLOR 29 176 135
+      END # STYLE
+      STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 0 0 255
+	    END # end of STYLE
+    END # CLASS
+  END # LAYER
+    
 
 END # MAP
