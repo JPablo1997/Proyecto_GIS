@@ -76,7 +76,7 @@ MAP
     SIZE 180 180 # The size of the reference image in pixels
     EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000 # The extent of the reference image in map units
     STATUS ON
-    MINBOXSIZE 10 # How small can the reference box be before it gets drawn as a point, in pixels
+    MINBOXSIZE 0 # How small can the reference box be before it gets drawn as a point, in pixels
     MAXBOXSIZE 250 # The maximum size of the reference box, in pixels
     COLOR -1 -1 -1 # The reference box fill color, negative numbers mean transparent
     OUTLINECOLOR 255 128 0 # The reference box outline color 
