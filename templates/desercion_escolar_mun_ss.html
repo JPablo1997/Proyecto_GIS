@@ -50,20 +50,20 @@
 </script>
 </head>
 
-<body bgcolor="#C0C0C0" text="#000000">
+<body bgcolor="#3F888F" text="#000000">
 <table width="1200" align="center">
+
 <tr>
     <td width="600">
 	<h2 align="center">Desercion en los centros educativos del sector público y privado en el municipio de San Salvador</h2>
 
 <!-- START OF MAPSERVER FORM -->
 <form name="mapserv" method="GET" action="/cgi-bin/mapserv">
-
 <table bgcolor="#FFFFFF" class="table" width="500" border="0" align="center">
   <tr>
+   
     <td>
 	<table width="500" border="1">
-
 		<tr>
 	    <td colspan="4"><b>Selecciona las capas:</b><br>
 <!-- SPECIFY VECTOR LAYERS -->
@@ -82,7 +82,7 @@
 		  			<input  id="cb_pol_internos" type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos"[poligonos_internos_check]>Poligonos internos &nbsp;<br>
 		  		</td> 
 		  		<td>
-		  			<input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos"[centros_educativos_check]>Centros educativos <br>
+		  			<input id="ce_capa" type="checkbox" onclick="refrescarBTN_Switch(1);" name="layer" value="centros_educativos"[centros_educativos_check]>Centros educativos <br>
 		  		</td>
           <td></td>
           <td>
@@ -92,7 +92,12 @@
 		  </table>
 	    </td>
 	  </tr>
-
+    <tr>
+      <td colspan="4">
+        <b>Filtros:</b>
+        <input id="filtro_ce" type="checkbox" onclick="refrescarBTN_Switch(0);" name="layer" value="centros_educativos_no_ayuda"[centros_educativos_no_ayuda_check]>Centros escolares que no reciben ayuda&nbsp;
+      </td>
+    </tr>
 	  <tr>
 	    <td>
 
@@ -128,7 +133,7 @@
 	    </td>
 	    <!-- REFERENCE COLUMN --> 
 	    <td rowspan="2" valign="top"> 
-	    	<p><b>Reference:</b><br> <input type="image" name="ref" src="[ref]" width="180" height="180" border="0" style="padding-top: 10px;"></p> 
+	    	<p><b>Reference:</b><br> <input type="image" name="ref" src="[ref]" width="180" height="180" border="0" style="padding-top: 10px; padding-left: 14px;"></p> 
 	    	<p><b>Legend:</b><br> <img name="legend" src="[legend]"></p>
 	    </td>
 	  </tr>
@@ -167,6 +172,19 @@
 </form>
 </table>
 <script>
+
+  function refrescarBTN_Switch(capa){
+
+    if(capa==0 && document.getElementById("ce_capa").checked){
+      document.getElementById("ce_capa").checked = false;
+      //document.getElementById("filtro_ce").checked = true;
+    }else if(capa==1 && document.getElementById("filtro_ce").checked){
+      document.getElementById("filtro_ce").checked = false;
+    }
+
+    refrescarBTN();
+  }
+
 	function refrescarBTN() {
 	  document.getElementById('refrescar').click();
 	}

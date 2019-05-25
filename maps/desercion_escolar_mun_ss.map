@@ -364,17 +364,91 @@ LAYER
     TOLERANCE 3
 
     #UNITS METERS
+
     CLASS
-	    NAME "Centros educativos"
+	    NAME "C.E. Publicos"
+	    EXPRESSION ("[sector]" eq 'Publico')
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
 	      SYMBOL "circle"
 	      SIZE 10
-	      COLOR 240 230 140
+	      COLOR 218 165 32
 	      OUTLINECOLOR 0 0 0
 	    END # end of STYLE
   END # end of CLASS
+
+  CLASS
+	    NAME "C.E. Privados"
+	    EXPRESSION ("[sector]" eq 'Privado')
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 238 232 125
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+
  END # LAYER
     
+
+    LAYER #CE sin ayuda
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_ayuda"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_ayuda"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "C.E. Publicos sin ayuda"
+	    EXPRESSION (("[sector]" eq "Publico")AND("[org_ayuda]" eq "No posee"))
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+
+  CLASS
+	    NAME "C.E. Privados sin ayuda"
+	    EXPRESSION (("[sector]" eq "Privado")AND("[org_ayuda]" eq "No posee"))
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 238 232 125
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+
+ END # LAYER
 
 END # MAP
