@@ -4,7 +4,7 @@
 <title>Deserción en el municio de SS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
 <script language="JavaScript">
@@ -65,25 +65,29 @@
 	<table width="500" border="1">
 
 		<tr>
-	    <td colspan="4"><b>Selecciona las capas:</b> <br>
+	    <td colspan="4"><b>Selecciona las capas:</b><br>
 <!-- SPECIFY VECTOR LAYERS -->
 		  <table>
 		  	<tr align="center">
 		  		<td>
-		  			<input id="mun_ss" type="checkbox" onclick="refrescarBTN();" name="layer" value="mun_ss"[mun_ss_check]>Municipio SS &nbsp;
+		  			<input id="cb_mun_ss" type="checkbox" onclick="refrescarBTN();" name="layer" value="mun_ss"[mun_ss_check]>Municipio SS &nbsp;
 		  		</td>
 		  		<td>
-		  			<input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss"[distritos_ss_check]>Distritos &nbsp;
+		  			<input id="cb_distritos" type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss"[distritos_ss_check]>Distritos &nbsp;
 		  		</td>
 		  		<td>
 		  			<input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_homicidios"[distritos_homicidios_check]>Homicidios distritales <br>
 		  		</td>
 		  		<td>
-		  			<input  type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos"[poligonos_internos_check]>Poligonos internos &nbsp;<br>
+		  			<input  id="cb_pol_internos" type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos"[poligonos_internos_check]>Poligonos internos &nbsp;<br>
 		  		</td> 
 		  		<td>
 		  			<input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos"[centros_educativos_check]>Centros educativos <br>
 		  		</td>
+          <td></td>
+          <td>
+            <button type="button" onclick="zoom_general();"><i class="fas fa-arrows-alt"></i></button>
+          </td>
 		  	</tr>
 		  </table>
 	    </td>
@@ -189,6 +193,34 @@
     }
     
   }
+
+  function zoom_general(){
+
+
+    /*[minx] = -89.311752;
+    [miny] = 13.630600;
+    [maxx] = -89.129748;
+    [maxy] = 13.746300;
+    
+    refrescarBTN();*/
+
+    document.getElementById('zoom').value = 0;
+
+    var pathname = document.URL; 
+    var url_primera_pt = pathname.split("map=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&zoom=4&//map=//%2Fhome%2Fpablo%2FDocumentos%2FUES%2FCiclo_I_2019%2FSGG115%2FProy_HEAD%2FProyecto_GIS%2Fmaps%2Fdesercion_escolar_mun_ss.map&
+    var url_tercera_pt =  url_primera_pt[0].split("zoom=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&
+    var url_utima_pt = "imgext=-89.311752+13.630600+-89.129748+13.746300&imgxy=275.0+175.0";
+
+    var url_zoom_cero = url_tercera_pt[0] + "zoom=0&map="+url_primera_pt[1];
+    var url_corte = url_zoom_cero.split("imgext=");
+    var url_completa = url_corte[0] + url_utima_pt;
+
+
+    window.location.href = url_completa;
+
+    //http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&zoom=4&map=%2Fhome%2Fpablo%2FDocumentos%2FUES%2FCiclo_I_2019%2FSGG115%2FProy_HEAD%2FProyecto_GIS%2Fmaps%2Fdesercion_escolar_mun_ss.map&//imgext=//-89.311752+13.630600+-89.129748+13.746300&imgxy=275.0+175.0
+  }
+//-89.311752+13.630600+-89.129748+13.746300
 </script>
 
 </body>
