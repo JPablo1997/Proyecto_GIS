@@ -223,7 +223,7 @@ MAP
 
 
     CLASS
-      NAME "Deserción [1.23%,5.70%]"
+      NAME "Deserción [1.23,5.70]"
       EXPRESSION (([porcentaje] >= 1.23)AND([porcentaje] <= 5.70))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -236,7 +236,7 @@ MAP
     END # CLASS
 
     CLASS
-      NAME "Deserción ]5.70%,10.17%]"
+      NAME "Deserción ]5.70,10.17]"
       EXPRESSION (([porcentaje] > 5.70)AND([porcentaje] <= 10.17))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -249,7 +249,7 @@ MAP
     END # CLASS
 
     CLASS
-      NAME "Deserción ]10.17%,14.64%]"
+      NAME "Deserción ]10.17,14.64]"
       EXPRESSION (([porcentaje] > 10.17)AND([porcentaje] <= 14.64))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -262,7 +262,7 @@ MAP
     END # CLASS
 
     CLASS
-      NAME "Deserción ]14.64%,19.11%]"
+      NAME "Deserción ]14.64,19.11]"
       EXPRESSION (([porcentaje] > 14.64)AND([porcentaje] <= 19.11))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -275,7 +275,7 @@ MAP
     END # CLASS
 
     CLASS
-      NAME "Deserción ]19.11%,23.58%]"
+      NAME "Deserción ]19.11,23.58]"
       EXPRESSION (([porcentaje] > 19.11)AND([porcentaje] <= 23.58))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -288,7 +288,7 @@ MAP
     END # CLASS
 
     CLASS
-      NAME "Deserción ]23.58%,28.05%]"
+      NAME "Deserción ]23.58,28.05]"
       EXPRESSION (([porcentaje] > 23.58)AND([porcentaje] <= 28.05))
       TEMPLATE '../templates/distrito_query/distrito_query.html'
       STYLE
@@ -669,7 +669,7 @@ LAYER
     UNITS METERS
 
     CLASS
-      NAME "Deserción [0.00%,6.20%]"
+      NAME "Deserción [0.00,6.20]"
       EXPRESSION (([porcentaje] >= 0.0000)AND([porcentaje] <= 6.2033))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -682,7 +682,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]6.20%,12.41%]"
+      NAME "Deserción ]6.20,12.41]"
       EXPRESSION (([porcentaje] > 6.2033)AND([porcentaje] <= 12.4067))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -695,7 +695,7 @@ LAYER
     END # CLASS
 
    	CLASS
-      NAME "Deserción ]12.41%,18.61%]"
+      NAME "Deserción ]12.41,18.61]"
       EXPRESSION (([porcentaje] > 12.4067)AND([porcentaje] <= 18.6100))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -708,7 +708,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]18.61%,24.81%]"
+      NAME "Deserción ]18.61,24.81]"
       EXPRESSION (([porcentaje] > 18.6100)AND([porcentaje] <= 24.8133))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -721,7 +721,7 @@ LAYER
     END # CLASS
 
   CLASS
-      NAME "Deserción ]24.81%,31.02%]"
+      NAME "Deserción ]24.81,31.02]"
       EXPRESSION (([porcentaje] > 24.8133)AND([porcentaje] <= 31.0167))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -734,7 +734,7 @@ LAYER
     END # CLASS
 
 	CLASS
-      NAME "Deserción ]31.02%,37.22%]"
+      NAME "Deserción ]31.02,37.22]"
       EXPRESSION (([porcentaje] > 31.0167)AND([porcentaje] <= 37.2200))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -747,7 +747,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]37.22%,43.42%]"
+      NAME "Deserción ]37.22,43.42]"
       EXPRESSION (([porcentaje] > 37.2200)AND([porcentaje] <= 43.4233))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -760,7 +760,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]43.42%,49.63%]"
+      NAME "Deserción ]43.42,49.63]"
       EXPRESSION (([porcentaje] > 43.4233)AND([porcentaje] <= 49.6267))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -773,7 +773,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]49.63%,55.83%]"
+      NAME "Deserción ]49.63,55.83]"
       EXPRESSION (([porcentaje] > 49.6267)AND([porcentaje] <= 55.8300))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -786,7 +786,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]55.83%,62.03%]"
+      NAME "Deserción ]55.83,62.03]"
       EXPRESSION (([porcentaje] > 55.8300)AND([porcentaje] <= 62.0333))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -799,7 +799,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]62.03%,68.24%]"
+      NAME "Deserción ]62.03,68.24]"
       EXPRESSION (([porcentaje] > 62.0333)AND([porcentaje] <= 68.2367))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -812,7 +812,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]68.24%,74.44%]"
+      NAME "Deserción ]68.24,74.44]"
       EXPRESSION (([porcentaje] > 68.2367)AND([porcentaje] <= 74.4400))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -825,7 +825,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]74.44%,80.64%]"
+      NAME "Deserción ]74.44,80.64]"
       EXPRESSION (([porcentaje] > 74.4400)AND([porcentaje] <= 80.6433))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -838,7 +838,7 @@ LAYER
     END # CLASS
  
  	CLASS
-      NAME "Deserción ]80.64%,86.85%]"
+      NAME "Deserción ]80.64,86.85]"
       EXPRESSION (([porcentaje] > 80.6433)AND([porcentaje] <= 86.8467))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -851,7 +851,7 @@ LAYER
     END # CLASS
 
     CLASS
-      NAME "Deserción ]86.85%,93.05%]"
+      NAME "Deserción ]86.85,93.05]"
       EXPRESSION (([porcentaje] > 86.8467)AND([porcentaje] <= 93.0500))
       TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
       STYLE
@@ -1007,7 +1007,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no AT"
+	    NAME "C.E. no apoyo AT"
 	    EXPRESSION ([ayuda_asis] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1053,7 +1053,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no EM"
+	    NAME "C.E no apoyo EM"
 	    EXPRESSION ([apoyo_econ] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1100,7 +1100,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no MD"
+	    NAME "C.E. no apoyo MD"
 	    EXPRESSION ([apoyo_mate] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1147,7 +1147,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no ME"
+	    NAME "C.E. no apoyo ME"
 	    EXPRESSION ([apoyo_mobi] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1194,7 +1194,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no IN"
+	    NAME "C.E. no apoyo IN"
 	    EXPRESSION ([apoyo_infr] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1241,7 +1241,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no RD"
+	    NAME "C.E no apoyo RD"
 	    EXPRESSION ([apoyo_remu] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1288,7 +1288,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no AL"
+	    NAME "C.E. no apoyo AL"
 	    EXPRESSION ([apoyo_alim] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -1335,7 +1335,7 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "Centros escolares no MC"
+	    NAME "C.E. no reciben apoyo MC"
 	    EXPRESSION ([apoyo_ma_1] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE

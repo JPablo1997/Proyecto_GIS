@@ -89,6 +89,8 @@
             <button type="button" onclick="zoom_general();"><i class="fas fa-arrows-alt"></i></button>
           </td>
 		  	</tr>
+
+
 		  </table>
 	    </td>
 	  </tr>
@@ -162,77 +164,80 @@
               <img src="/cgi-bin/mapserv?map=[map]&mapext=[minx]+[miny]+[maxx]+[maxy]&map_scalebar=units+kilometers&mode=scalebar" align="right">
 	    </td>
       <td>
-        <table border="1" style="font-size: 14px;" width="340">
-          <tr>
-            <b>Filtros por capa</b>
-          </tr>
-          <tr>
-            <td>Distritos</td>
-            <td>Poligonos internos</td>
-            <td>Centros educativos</td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_desercion"[distritos_ss_porc_desercion_check]>% Desercion
-            </td>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_recibe_apoyo"[poligonos_internos_recibe_apoyo_check]>No apoyo
-            </td>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AT"[centros_educativos_no_AT_check]>No ap AT
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_embarazos"[distritos_ss_porc_embarazos_check]>% Embarazos
-            </td>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_porc_desercion"[poligonos_internos_porc_desercion_check]>% Dersercion
-            </td>
-            <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_EM"[centros_educativos_no_EM_check]>No ap EM
-            </td>
-          </tr>
-          <tr>
+     
+        <table border="1" style="font-size: 14px;" width="430">
+          <tr style="background-color: black; color: white; text-align: center;">
             <td></td>
+            <td><b>Filtros por capa</b></td>
             <td></td>
+          </tr>
+          <tr style="text-align: center;">
+            <td><b>Distritos</b></td>
+            <td><b>Poligonos internos</b></td>
+            <td><b>Centros educativos</b></td>
+          </tr>
+          <tr>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MD"[centros_educativos_no_MD_check]>No ap MD
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_desercion"[distritos_ss_porc_desercion_check]>Cat. por deserción
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_recibe_apoyo"[poligonos_internos_recibe_apoyo_check]>Ningún tipo de apoyo
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AT"[centros_educativos_no_AT_check]>C.E. no apoyo AT
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_embarazos"[distritos_ss_porc_embarazos_check]>Cat. por embarazos
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_porc_desercion"[poligonos_internos_porc_desercion_check]>Cat. por deserción
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_EM"[centros_educativos_no_EM_check]>C.E. no apoyo EM
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_RD"[centros_educativos_no_RD_check]>No ap RD
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MD"[centros_educativos_no_MD_check]>C.E. no apoyo MD
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_IN"[centros_educativos_no_IN_check]>No ap IN
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_RD"[centros_educativos_no_RD_check]>C.E. no apoyo RD
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MC"[centros_educativos_no_MC_check]>No ap MC
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_IN"[centros_educativos_no_IN_check]>C.E. no apoyo IN
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_ME"[centros_educativos_no_ME_check]>No ap ME
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MC"[centros_educativos_no_MC_check]>C.E. no apoyo MC
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AL"[centros_educativos_no_AL_check]>No ap AL
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_ME"[centros_educativos_no_ME_check]>C.E. no apoyo ME
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AL"[centros_educativos_no_AL_check]>C.E. no apoyo AL
             </td>
           </tr>
           <tr>
@@ -244,6 +249,23 @@
           </tr>
 
         </table>
+        <table style="font-size: 14px;">
+          <tr>
+            <td><b>AT</b>: Asistencia técnica</td>
+            <td><b>EM</b>: Economico</td>
+            <td><b>MD</b>: Materia didactico</td>
+          </tr>
+          <tr>
+            <td><b>RD</b>: Remuneración docente</td>
+            <td><b>IN</b>: Infraestructura</td>
+            <td><b>MC</b>: Materia construcción</td>
+          </tr>
+          <tr>
+            <td><b>ME</b>: Mobiliario y equipo</td>
+            <td><b>AL</b>: Alimentos</td>
+          </tr>
+        </table>
+          
       </td>
 	  </tr>
 
@@ -317,12 +339,20 @@
     document.getElementById('zoom').value = 0;
 
     var pathname = document.URL; 
-    var url_primera_pt = pathname.split("map=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&zoom=4&//map=//%2Fhome%2Fpablo%2FDocumentos%2FUES%2FCiclo_I_2019%2FSGG115%2FProy_HEAD%2FProyecto_GIS%2Fmaps%2Fdesercion_escolar_mun_ss.map&
-    var url_tercera_pt =  url_primera_pt[0].split("zoom=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&
-    var url_utima_pt = "imgext=-89.311752+13.630600+-89.129748+13.746300&imgxy=275.0+175.0";
+    var url_primera_pt = pathname.split("map=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&zoom=4&layer=aqui&//map=//%2Fhome%2Fpablo%2FDocumentos%2FUES%2FCiclo_I_2019%2FSGG115%2FProy_HEAD%2FProyecto_GIS%2Fmaps%2Fdesercion_escolar_mun_ss.map&
+  
+    var url_tercera_pt =  url_primera_pt[0].split("zoom=");//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&//zoom//=4&layer=aqui&/
 
-    var url_zoom_cero = url_tercera_pt[0] + "zoom=0&map="+url_primera_pt[1];
+
+    var url_layer =  url_primera_pt[0].split(/zoom=[0-4]/);//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&zoom=4&layer=aqui&/
+
+
+    var url_zoom_cero = url_tercera_pt[0] + "zoom=0&layer="+url_layer[1]+"&map="+url_primera_pt[1];//http://localhost/cgi-bin/mapserv?layer=mun_ss&mode=browse&submit=Refrescar&
+    
+
     var url_corte = url_zoom_cero.split("imgext=");
+
+    var url_utima_pt = "imgext=-89.311752+13.630600+-89.129748+13.746300&imgxy=275.0+175.0";
     var url_completa = url_corte[0] + url_utima_pt;
 
 
