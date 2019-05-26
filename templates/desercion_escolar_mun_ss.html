@@ -55,7 +55,7 @@
 
 <tr>
     <td width="600">
-	<h2 align="center">Desercion en los centros educativos del sector público y privado en el municipio de San Salvador</h2>
+	<h2 align="center">Deserción en los centros educativos del sector público y privado en el municipio de San Salvador</h2>
 
 <!-- START OF MAPSERVER FORM -->
 <form name="mapserv" method="GET" action="/cgi-bin/mapserv">
@@ -82,7 +82,7 @@
 		  			<input  id="cb_pol_internos" type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos"[poligonos_internos_check]>Poligonos internos &nbsp;<br>
 		  		</td> 
 		  		<td>
-		  			<input id="ce_capa" type="checkbox" onclick="refrescarBTN_Switch(1);" name="layer" value="centros_educativos"[centros_educativos_check]>Centros educativos <br>
+		  			<input id="ce_capa" type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos"[centros_educativos_check]>Centros educativos <br>
 		  		</td>
           <td></td>
           <td>
@@ -93,10 +93,10 @@
 	    </td>
 	  </tr>
     <tr>
-      <td colspan="4">
+      <!--<td colspan="4">
         <b>Filtros:</b>
         <input id="filtro_ce" type="checkbox" onclick="refrescarBTN_Switch(0);" name="layer" value="centros_educativos_no_ayuda"[centros_educativos_no_ayuda_check]>Centros escolares que no reciben ayuda&nbsp;
-      </td>
+      </td>-->
     </tr>
 	  <tr>
 	    <td>
@@ -136,6 +136,7 @@
 	    	<p><b>Reference:</b><br> <input type="image" name="ref" src="[ref]" width="180" height="180" border="0" style="padding-top: 10px; padding-left: 14px;"></p> 
 	    	<p><b>Legend:</b><br> <img name="legend" src="[legend]"></p>
 	    </td>
+     
 	  </tr>
 	  <tr>
 <!-- DISPLAY THE MAPSERVER-CREATED MAP IMAGE -->
@@ -160,11 +161,102 @@
               <img align="left" src="[scalebar]">
               <img src="/cgi-bin/mapserv?map=[map]&mapext=[minx]+[miny]+[maxx]+[maxy]&map_scalebar=units+kilometers&mode=scalebar" align="right">
 	    </td>
+      <td>
+        <table border="1" style="font-size: 14px;" width="340">
+          <tr>
+            <b>Filtros por capa</b>
+          </tr>
+          <tr>
+            <td>Distritos</td>
+            <td>Poligonos internos</td>
+            <td>Centros educativos</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_desercion"[distritos_ss_porc_desercion_check]>% Desercion
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_recibe_apoyo"[poligonos_internos_recibe_apoyo_check]>No apoyo
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AT"[centros_educativos_no_AT_check]>No ap AT
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="distritos_ss_porc_embarazos"[distritos_ss_porc_embarazos_check]>% Embarazos
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_porc_desercion"[poligonos_internos_porc_desercion_check]>% Dersercion
+            </td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_EM"[centros_educativos_no_EM_check]>No ap EM
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MD"[centros_educativos_no_MD_check]>No ap MD
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_RD"[centros_educativos_no_RD_check]>No ap RD
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_IN"[centros_educativos_no_IN_check]>No ap IN
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MC"[centros_educativos_no_MC_check]>No ap MC
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_ME"[centros_educativos_no_ME_check]>No ap ME
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AL"[centros_educativos_no_AL_check]>No ap AL
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_p_p"[centros_educativos_p_p_check]>Público/Privado
+            </td>
+          </tr>
+
+        </table>
+      </td>
 	  </tr>
+
+    
+
 	</table>
     </td>
   </tr>
+
+
+
 </table>
+
 <!-- HIDDEN MAPSERVER CGI VARIABLES -->
     <input id="map" type="hidden" name="map" value="[map]" />
     <input type="hidden" name="imgext" value="[mapext]" />

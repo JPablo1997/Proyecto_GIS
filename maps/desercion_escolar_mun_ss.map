@@ -184,6 +184,244 @@ MAP
   END # LAYER
 
 
+
+
+
+ #Nuevo
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM distritos_ssa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "distritos_ss_porc_desercion"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "distritos_ss_porc_desercion"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    HEADER '../templates/distrito_query/distrito_header.html'
+    FOOTER '../templates/distrito_query/distrito_footer.html'
+    
+    TOLERANCE 3
+
+    UNITS METERS
+
+
+    CLASS
+      NAME "Deserción [1.23%,5.70%]"
+      EXPRESSION (([porcentaje] >= 1.23)AND([porcentaje] <= 5.70))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 255 128 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]5.70%,10.17%]"
+      EXPRESSION (([porcentaje] > 5.70)AND([porcentaje] <= 10.17))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 214 107 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]10.17%,14.64%]"
+      EXPRESSION (([porcentaje] > 10.17)AND([porcentaje] <= 14.64))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 173 86 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]14.64%,19.11%]"
+      EXPRESSION (([porcentaje] > 14.64)AND([porcentaje] <= 19.11))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 132 65 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]19.11%,23.58%]"
+      EXPRESSION (([porcentaje] > 19.11)AND([porcentaje] <= 23.58))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 91 44 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]23.58%,28.05%]"
+      EXPRESSION (([porcentaje] > 23.58)AND([porcentaje] <= 28.05))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 50 23 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+
+  END # LAYER
+
+
+
+#Embarazos_Nuevo
+
+LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM distritos_ssa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "distritos_ss_porc_embarazos"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "distritos_ss_porc_embarazos"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    HEADER '../templates/distrito_query/distrito_header.html'
+    FOOTER '../templates/distrito_query/distrito_footer.html'
+    
+    TOLERANCE 3
+
+    UNITS METERS
+    CLASS
+      NAME "Embarazos [0,3]"
+      EXPRESSION (([cant_embar] >= 0)AND([cant_embar] <= 3))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 255 51 153
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Embarazos [4,7]"
+      EXPRESSION (([cant_embar] >= 4)AND([cant_embar] <= 7))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 255 0 127
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Embarazos [8,11]"
+      EXPRESSION (([cant_embar] >= 8)AND([cant_embar] <= 11))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 204 0 102
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Embarazos [12,15]"
+      EXPRESSION (([cant_embar] >= 12)AND([cant_embar] <= 15))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 153 0 76
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Embarazos [16,19]"
+      EXPRESSION (([cant_embar] >= 16)AND([cant_embar] <= 19))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 102 0 51
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Embarazos [20,24]"
+      EXPRESSION (([cant_embar] >= 20)AND([cant_embar] <= 24))
+      TEMPLATE '../templates/distrito_query/distrito_query.html'
+      STYLE
+        COLOR 51 0 25
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+
+  END # LAYER
+
+
+
   LAYER
     CONNECTIONTYPE POSTGIS
     CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
@@ -332,7 +570,304 @@ LAYER
     END # CLASS
   END # LAYER
 
+
+  #Recibe/No recibe apoyo
   LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM poligonos_internosa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "poligonos_internos_recibe_apoyo"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "poligonos_internos_recibe_apoyo"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    HEADER '../templates/poligono_interno_query/poligono_interno_header.html'
+    FOOTER '../templates/poligono_interno_query/poligono_interno_footer.html'
+    
+    TOLERANCE 3
+
+    UNITS METERS
+    CLASS
+      NAME "Poligonos no reciben apoyo"
+      EXPRESSION (([asist_tec] == 0)AND([eco_monet] == 0)AND([mat_didact] == 0)AND([mobil_y_eq] == 0)AND([infraest] == 0)AND([remun_doc] == 0)AND([alimentos] == 0)AND([mat_const] == 0))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 204 204 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Poligonos reciben apoyo"
+      EXPRESSION (([asist_tec] >= 0)OR([eco_monet] >= 0)OR([mat_didact] >= 0)AND([mobil_y_eq] >= 0)OR([infraest] >= 0)OR([remun_doc] >= 0)OR([alimentos] >= 0)OR([mat_const] >= 0))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 102 204 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+  END # LAYER
+
+
+
+  #Desercion poligonos internos
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM poligonos_internosa USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      "ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "poligonos_internos_porc_desercion"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "poligonos_internos_porc_desercion"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    TILEITEM "location"
+    TYPE POLYGON
+
+    HEADER '../templates/poligono_interno_query/poligono_interno_header.html'
+    FOOTER '../templates/poligono_interno_query/poligono_interno_footer.html'
+    
+    TOLERANCE 3
+
+    UNITS METERS
+
+    CLASS
+      NAME "Deserción [0.00%,6.20%]"
+      EXPRESSION (([porcentaje] >= 0.0000)AND([porcentaje] <= 6.2033))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 255 128 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]6.20%,12.41%]"
+      EXPRESSION (([porcentaje] > 6.2033)AND([porcentaje] <= 12.4067))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 240 121 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+   	CLASS
+      NAME "Deserción ]12.41%,18.61%]"
+      EXPRESSION (([porcentaje] > 12.4067)AND([porcentaje] <= 18.6100))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 225 114 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]18.61%,24.81%]"
+      EXPRESSION (([porcentaje] > 18.6100)AND([porcentaje] <= 24.8133))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 210 107 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+  CLASS
+      NAME "Deserción ]24.81%,31.02%]"
+      EXPRESSION (([porcentaje] > 24.8133)AND([porcentaje] <= 31.0167))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 195 100 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+	CLASS
+      NAME "Deserción ]31.02%,37.22%]"
+      EXPRESSION (([porcentaje] > 31.0167)AND([porcentaje] <= 37.2200))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 180 93 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]37.22%,43.42%]"
+      EXPRESSION (([porcentaje] > 37.2200)AND([porcentaje] <= 43.4233))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 165 86 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]43.42%,49.63%]"
+      EXPRESSION (([porcentaje] > 43.4233)AND([porcentaje] <= 49.6267))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 150 79 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]49.63%,55.83%]"
+      EXPRESSION (([porcentaje] > 49.6267)AND([porcentaje] <= 55.8300))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 135 72 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]55.83%,62.03%]"
+      EXPRESSION (([porcentaje] > 55.8300)AND([porcentaje] <= 62.0333))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 120 65 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]62.03%,68.24%]"
+      EXPRESSION (([porcentaje] > 62.0333)AND([porcentaje] <= 68.2367))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 105 58 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]68.24%,74.44%]"
+      EXPRESSION (([porcentaje] > 68.2367)AND([porcentaje] <= 74.4400))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 90 51 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]74.44%,80.64%]"
+      EXPRESSION (([porcentaje] > 74.4400)AND([porcentaje] <= 80.6433))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 75 44 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+ 
+ 	CLASS
+      NAME "Deserción ]80.64%,86.85%]"
+      EXPRESSION (([porcentaje] > 80.6433)AND([porcentaje] <= 86.8467))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 60 37 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+    CLASS
+      NAME "Deserción ]86.85%,93.05%]"
+      EXPRESSION (([porcentaje] > 86.8467)AND([porcentaje] <= 93.0500))
+      TEMPLATE '../templates/poligono_interno_query/poligono_interno_query.html'
+      STYLE
+        COLOR 45 30 0
+      END # STYLE
+      STYLE
+      OUTLINECOLOR 0 0 0
+        WIDTH 1.500000
+      END # STYLE
+    END # CLASS
+
+
+  END # LAYER
+
+
+LAYER
     CONNECTIONTYPE POSTGIS
     CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
     DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
@@ -366,7 +901,53 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "C.E. Publicos"
+	    NAME "Centros escolares"
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_p_p"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_p_p"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "C.E. Públicos"
 	    EXPRESSION ("[sector]" eq 'Publico')
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
@@ -390,9 +971,9 @@ LAYER
   END # end of CLASS
 
  END # LAYER
-    
 
-    LAYER #CE sin ayuda
+
+ LAYER
     CONNECTIONTYPE POSTGIS
     CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
     DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
@@ -402,12 +983,12 @@ LAYER
       "gml_featureid" "gid"
       #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
       "ows_srs" "EPSG:4326"
-      "ows_title" "centros_educativos_no_ayuda"
+      "ows_title" "centros_educativos_no_AT"
       "wms_getfeatureinfo_formatlist" "OGRGML"
       "wms_bbox_extended" "true"
       "gml_include_items" "all"
     END # METADATA
-    NAME "centros_educativos_no_ayuda"
+    NAME "centros_educativos_no_AT"
     PROJECTION
       "proj=longlat"
       "datum=WGS84"
@@ -426,8 +1007,8 @@ LAYER
     #UNITS METERS
 
     CLASS
-	    NAME "C.E. Publicos sin ayuda"
-	    EXPRESSION (("[sector]" eq "Publico")AND("[org_ayuda]" eq "No posee"))
+	    NAME "Centros escolares no AT"
+	    EXPRESSION ([ayuda_asis] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
 	      SYMBOL "circle"
@@ -436,19 +1017,335 @@ LAYER
 	      OUTLINECOLOR 0 0 0
 	    END # end of STYLE
   END # end of CLASS
+ END # LAYER
 
-  CLASS
-	    NAME "C.E. Privados sin ayuda"
-	    EXPRESSION (("[sector]" eq "Privado")AND("[org_ayuda]" eq "No posee"))
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_EM"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_EM"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no EM"
+	    EXPRESSION ([apoyo_econ] == 0)
 	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
 	    STYLE
 	      SYMBOL "circle"
 	      SIZE 10
-	      COLOR 238 232 125
+	      COLOR 218 165 32
 	      OUTLINECOLOR 0 0 0
 	    END # end of STYLE
   END # end of CLASS
-
  END # LAYER
+ 
+
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_MD"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_MD"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no MD"
+	    EXPRESSION ([apoyo_mate] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_ME"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_ME"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no ME"
+	    EXPRESSION ([apoyo_mobi] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_IN"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_IN"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no IN"
+	    EXPRESSION ([apoyo_infr] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_RD"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_RD"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no RD"
+	    EXPRESSION ([apoyo_remu] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+  LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_AL"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_AL"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no AL"
+	    EXPRESSION ([apoyo_alim] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
+
+ LAYER
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "dbname='desercion_db' host=127.0.0.1 port=5432 sslmode=disable user=postgres password=admin"
+    DATA "geom FROM centros_educativosp USING UNIQUE gid USING srid=4326" 
+    EXTENT -89.278500000 13.630600000 -89.163000000 13.746300000
+    METADATA
+      "ows_include_items" "all"
+      "gml_featureid" "gid"
+      #"ows_extent"  "-89.278500000 13.630600000 -89.163000000 13.746300000"
+      "ows_srs" "EPSG:4326"
+      "ows_title" "centros_educativos_no_MC"
+      "wms_getfeatureinfo_formatlist" "OGRGML"
+      "wms_bbox_extended" "true"
+      "gml_include_items" "all"
+    END # METADATA
+    NAME "centros_educativos_no_MC"
+    PROJECTION
+      "proj=longlat"
+      "datum=WGS84"
+      "no_defs"
+    END # PROJECTION
+
+    STATUS ON
+    #TILEITEM "location"
+    TYPE POINT
+    
+    HEADER '../templates/centro_educativo_query/centro_educativo_header.html'
+    FOOTER '../templates/centro_educativo_query/centro_educativo_footer.html'
+    
+    TOLERANCE 3
+
+    #UNITS METERS
+
+    CLASS
+	    NAME "Centros escolares no MC"
+	    EXPRESSION ([apoyo_ma_1] == 0)
+	    TEMPLATE '../templates/centro_educativo_query/centro_educativo_query.html'
+	    STYLE
+	      SYMBOL "circle"
+	      SIZE 10
+	      COLOR 218 165 32
+	      OUTLINECOLOR 0 0 0
+	    END # end of STYLE
+  END # end of CLASS
+ END # LAYER
+
 
 END # MAP
