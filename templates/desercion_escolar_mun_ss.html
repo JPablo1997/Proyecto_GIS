@@ -58,7 +58,7 @@
 	<h2 align="center">Deserción en los centros educativos del sector público y privado en el municipio de San Salvador</h2>
 
 <!-- START OF MAPSERVER FORM -->
-<form name="mapserv" method="GET" action="/cgi-bin/mapserv">
+<form name="mapserv" method="GET" action="/cgi-bin/mapserv.exe">
 <table bgcolor="#FFFFFF" class="table" width="500" border="0" align="center">
   <tr>
    
@@ -145,23 +145,23 @@
 	    <td colspan="3" align="center" valign="top"> 
 	      <table border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#666666">
                 <tr>
-                  <td align="right" width="18"><a href="javascript:pan('nw')"><img src="http://localhost/tmp/graphics/nw.gif" width="18" height="18" border="0" alt="pan northwest"></a></td>
-                  <td align="center"><a href="javascript:pan('n')"><img src="http://localhost/tmp/graphics/n.gif" width="23" height="18" border="0" alt="pan north"></a></td>
-                  <td align="left" width="18"><a href="javascript:pan('ne')"><img src="http://localhost/tmp/graphics/ne.gif" width="18" height="18" border="0" alt="pan northeast"></a></td>
+                  <td align="right" width="18"><a href="javascript:pan('nw')"><img src="http://localhost/ms_tmp/graphics/nw.gif" width="18" height="18" border="0" alt="pan northwest"></a></td>
+                  <td align="center"><a href="javascript:pan('n')"><img src="http://localhost/ms_tmp/graphics/n.gif" width="23" height="18" border="0" alt="pan north"></a></td>
+                  <td align="left" width="18"><a href="javascript:pan('ne')"><img src="http://localhost/ms_tmp/graphics/ne.gif" width="18" height="18" border="0" alt="pan northeast"></a></td>
                 </tr>
                 <tr>
-                  <td align="right" width="18"><a href="javascript:pan('w')"><img src="http://localhost/tmp/graphics/w.gif" width="18" height="23" border="0" alt="pan west"></a></td>
+                  <td align="right" width="18"><a href="javascript:pan('w')"><img src="http://localhost/ms_tmp/graphics/w.gif" width="18" height="23" border="0" alt="pan west"></a></td>
                   <td align="center"><input id="target" type="image" name="img" src="[img]" width="[mapwidth]" height="[mapheight]" border="0" alt="this is the map" onclick="validar_zoom();"></td>
-                  <td align="left" width="18"><a href="javascript:pan('e')"><img src="http://localhost/tmp/graphics/e.gif" width="18" height="23" border="0" alt="pan east"></a></td>
+                  <td align="left" width="18"><a href="javascript:pan('e')"><img src="http://localhost/ms_tmp/graphics/e.gif" width="18" height="23" border="0" alt="pan east"></a></td>
                 </tr>
                 <tr>
-                  <td align="right" width="18"><a href="javascript:pan('sw')"><img src="http://localhost/tmp/graphics/sw.gif" width="18" height="18" border="0" alt="pan southwest"></a></td>
-                  <td align="center"><a href="javascript:pan('s')"><img src="http://localhost/tmp/graphics/s.gif" width="23" height="18" border="0" alt="pan south"></a></td>
-                  <td align="left" width="18"><a href="javascript:pan('se')"><img src="http://localhost/tmp/graphics/se.gif" width="18" height="18" border="0" alt="pan southeast"></a></td>
+                  <td align="right" width="18"><a href="javascript:pan('sw')"><img src="http://localhost/ms_tmp/graphics/sw.gif" width="18" height="18" border="0" alt="pan southwest"></a></td>
+                  <td align="center"><a href="javascript:pan('s')"><img src="http://localhost/ms_tmp/graphics/s.gif" width="23" height="18" border="0" alt="pan south"></a></td>
+                  <td align="left" width="18"><a href="javascript:pan('se')"><img src="http://localhost/ms_tmp/graphics/se.gif" width="18" height="18" border="0" alt="pan southeast"></a></td>
                 </tr>
               </table>
               <img align="left" src="[scalebar]">
-              <img src="/cgi-bin/mapserv?map=[map]&mapext=[minx]+[miny]+[maxx]+[maxy]&map_scalebar=units+kilometers&mode=scalebar" align="right">
+              <img src="/cgi-bin/mapserv.exe?map=[map]&mapext=[minx]+[miny]+[maxx]+[maxy]&map_scalebar=units+kilometers&mode=scalebar" align="right">
 	    </td>
       <td>
      
@@ -184,7 +184,7 @@
               <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_recibe_apoyo"[poligonos_internos_recibe_apoyo_check]>Ningún tipo de apoyo
             </td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AT"[centros_educativos_no_AT_check]>C.E. no apoyo AT
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AT"[centros_educativos_no_AT_check]>C.E. si apoyo AT
             </td>
           </tr>
           <tr>
@@ -195,49 +195,49 @@
               <input type="checkbox" onclick="refrescarBTN();" name="layer" value="poligonos_internos_porc_desercion"[poligonos_internos_porc_desercion_check]>Cat. por deserción
             </td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_EM"[centros_educativos_no_EM_check]>C.E. no apoyo EM
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_EM"[centros_educativos_no_EM_check]>C.E. si apoyo EM
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MD"[centros_educativos_no_MD_check]>C.E. no apoyo MD
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MD"[centros_educativos_no_MD_check]>C.E. si apoyo MD
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_RD"[centros_educativos_no_RD_check]>C.E. no apoyo RD
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_RD"[centros_educativos_no_RD_check]>C.E. si apoyo RD
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_IN"[centros_educativos_no_IN_check]>C.E. no apoyo IN
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_IN"[centros_educativos_no_IN_check]>C.E. si apoyo IN
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MC"[centros_educativos_no_MC_check]>C.E. no apoyo MC
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_MC"[centros_educativos_no_MC_check]>C.E. si apoyo MC
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_ME"[centros_educativos_no_ME_check]>C.E. no apoyo ME
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_ME"[centros_educativos_no_ME_check]>C.E. si apoyo ME
             </td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td>
-              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AL"[centros_educativos_no_AL_check]>C.E. no apoyo AL
+              <input type="checkbox" onclick="refrescarBTN();" name="layer" value="centros_educativos_no_AL"[centros_educativos_no_AL_check]>C.E. si apoyo AL
             </td>
           </tr>
           <tr>
